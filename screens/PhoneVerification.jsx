@@ -5,13 +5,41 @@ import { Ionicons } from "@expo/vector-icons";
 import { Image } from "react-native";
 import OTPTextView from "react-native-otp-textinput";
 import { StyleSheet } from "react-native";
-import { Platform } from "react-native";
-import { TextInput } from "react-native";
+import { Platform, Keyboard } from "react-native";
+import * as Location from "expo-location";
+import AcceptTerms from "../components/AcceptTerms";
+import ModalWithButton from "../components/ModalWithButton";
+
 const PhoneVerification = ({ navigation }) => {
+  const [termsVisible, setTermsVisible] = useState(false);
+  const [locationVisible, setlocationVisible] = useState(false);
+
+  const handleModalClose = () => {
+    setTermsVisible(false);
+  };
+  const handlelocationVisible = () => {
+    setlocationVisible(false);
+  };
+  const showLocationModal = () => {
+    setlocationVisible(true);
+  };
   const otpRef = useRef(null);
   const handleOtpChange = (otp) => {
-    if (otp.length === 6) {
+    console.log(otp, "otp");
+    if (otp.length === 4) {
       Keyboard.dismiss();
+    }
+  };
+
+  const getLocationPermission = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      console.log("Location permission not granted");
+    } else {
+      console.log("Location permission granted");
+      const { coords } = await Location.getCurrentPositionAsync({});
+      console.log("Location:", coords);
+      handlelocationVisible();
     }
   };
   return (
@@ -42,19 +70,21 @@ const PhoneVerification = ({ navigation }) => {
               Enter OTP here
             </Text>
             <OTPTextView
-              ref={otpRef}
               style={styles.otpInput}
               pinCount={4}
+              ref={otpRef}
               autoFocusOnLoad
-              onCodeChanged={handleOtpChange}
+              handleTextChange={handleOtpChange}
               codeInputFieldStyle={styles.otpInputField}
               codeInputHighlightStyle={styles.otpInputHighlight}
             />
-
             <Text className="text-sm font-bold text-white leading-10">
               Resend OTP
             </Text>
-            <Pressable className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]">
+            <Pressable
+              onPress={() => setTermsVisible(!termsVisible)}
+              className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]"
+            >
               <Text className=" text-[#F9F9F9] font-bold  py-2 px-4 ">
                 Submit OTP
               </Text>
@@ -62,6 +92,17 @@ const PhoneVerification = ({ navigation }) => {
           </View>
         </View>
       </KeyboardAvoidingView>
+      <AcceptTerms
+        visible={termsVisible}
+        onClose={handleModalClose}
+        showLocation={showLocationModal}
+      />
+      <ModalWithButton
+        visible={locationVisible}
+        onClose={handlelocationVisible}
+        allow={getLocationPermission}
+        cancel={getLocationPermission}
+      />
     </SafeAreaView>
   );
 };
