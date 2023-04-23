@@ -82,18 +82,20 @@ const styles = StyleSheet.create({
     height: 70,
     fontSize: 24,
     borderRadius: 10,
+    marginHorizontal: 5, // Add margin between OTP inputs
     borderWidth: 1,
     borderColor: "#000",
     textAlign: "center",
   },
   otpInputField: {
     height: 60,
+    flex: 1, // Set flex to 1 for OTP input field
     width: 80,
     borderWidth: 0,
     borderBottomWidth: 1,
     fontSize: 24,
     color: "#000",
-    textAlign: "center", 
+    textAlign: "center",
   },
   otpInputHighlight: {
     borderColor: "#000",
