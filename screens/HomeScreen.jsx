@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { Text, View, Image } from "react-native";
 import Swiper from "react-native-swiper";
@@ -102,7 +102,9 @@ const HomeScreen = ({ navigation }) => {
   };
   const handleIndexChange = (index) => {
     if (index === 2) {
-      navigation.navigate("PopupScreen");
+      setTimeout(() => {
+        navigation.navigate("PopupScreen");
+      }, 500);
     }
   };
 
@@ -163,23 +165,23 @@ const styles = StyleSheet.create({
   },
   dot: {
     backgroundColor: "#FDBD28",
-    width: 4,
-    height: 4,
-    borderRadius: 4,
-    marginLeft: 4,
-    marginRight: 4,
-    marginTop: 3,
-    marginBottom: 60,
-  },
-  activeDot: {
-    backgroundColor: "#ffff",
     width: 6,
     height: 6,
     borderRadius: 6,
-    marginLeft: 4,
-    marginRight: 4,
+    marginLeft: 6,
+    marginRight: 6,
     marginTop: 3,
-    marginBottom: 60,
+    marginBottom: 70,
+  },
+  activeDot: {
+    backgroundColor: "#ffff",
+    width: 8,
+    height: 8,
+    borderRadius: 8,
+    marginLeft: 6,
+    marginRight: 6,
+    marginTop: 3,
+    marginBottom: 70,
   },
   safe: {
     width: "100%",

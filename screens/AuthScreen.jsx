@@ -24,7 +24,7 @@ const AuthScreen = ({ navigation }) => {
           </ImageBackground>
         </View>
         <View className="h-full rounded-[54px] bg-[#2D4BA1] p-10 items-center">
-          <Text className="text-3xl font-bold text-white leading-10">
+          <Text className="text-3xl font-bold text-white my-2 leading-10">
             Welcome to <Text className="text-[#FDBD28]">Vodcast</Text>
           </Text>
           <View className="gap-4 my-10 w-full px-10 items-center justify-center">
@@ -32,12 +32,12 @@ const AuthScreen = ({ navigation }) => {
               onPress={() => navigation.navigate("SignUp")}
               className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]"
             >
-              <Text className=" text-white font-bold py-2 px-4 ">
+              <Text className=" text-white font-bold py-2 px-2 ">
                 <AntDesign name="adduser" size={18} color="white" /> Sign up now
               </Text>
             </Pressable>
             <Pressable className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]">
-              <Text className=" text-white font-bold py-2 px-4 ">
+              <Text className=" text-white font-bold py-2 px-2 ">
                 <Feather name="user-check" size={18} color="white" /> Existing
                 user? Login
               </Text>

@@ -1,11 +1,25 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native";
-
-const Profile = () => {
+const Profile = ({navigation}) => {
   return (
     <SafeAreaView>
-      <Text>Profile</Text>
+      <View
+        style={{
+          marginTop: 10,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <View
+          style={{
+            marginTop: 110,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text >Profile</Text>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };

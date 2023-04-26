@@ -48,8 +48,7 @@ const AcceptTerms = ({ visible, onClose, allow }) => {
             >
               <Ionicons name="location" size={38} color="#FDBD28" />
               <Text
-                style={{ color: "#FFFFFF", fontSize: 16 }}
-                className="font-semibold"
+                style={{ color: "#FFFFFF", fontSize: 16 , fontWeight:"bold" }}
               >
                 Vodcast wants to know your location
               </Text>

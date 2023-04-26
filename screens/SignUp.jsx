@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, Image } from "react-native";
 import React from "react";
 import { ImageBackground } from "react-native";
 import { Pressable } from "react-native";
-import { Entypo, EvilIcons, Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { AntDesign, Feather } from "@expo/vector-icons";
 const SignUp = ({ navigation }) => {
   return (
@@ -29,38 +29,40 @@ const SignUp = ({ navigation }) => {
           <View className="gap-2 my-10 w-full items-center justify-center">
             <Pressable
               onPress={() => navigation.navigate("SignUp")}
-              className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]"
+              className="w-full py-3 flex-row items-center justify-evenly px-10 rounded-xl bg-[#4366CB]"
             >
-              <Text className=" text-white font-bold py-2 px-4 ">
-                <AntDesign name="google" size={18} color="white" />
+              <AntDesign name="google" size={16} color="white" />
+              <Text className=" text-white font-bold py-2">
                 Continue with Google
               </Text>
             </Pressable>
-            <Pressable className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]">
-              <Text className=" text-white font-bold py-2 px-4 ">
-                <Feather name="facebook" size={18} color="white" /> Continue
-                with Facebook
+            <Pressable className="w-full py-3 flex-row items-center justify-evenly px-10 rounded-xl bg-[#4366CB]">
+              <Feather name="facebook" size={16} color="white" />
+              <Text className=" text-white font-bold py-2">
+                Continue with Facebook
               </Text>
             </Pressable>
-            <Pressable className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]">
-              <Text className=" text-white font-bold py-2 px-4 ">
-                <Feather name="instagram" size={18} color="white" />
+            <Pressable className="w-full py-3 flex-row items-center justify-evenly px-10 rounded-xl bg-[#4366CB]">
+            <Text>
+            <Feather name="instagram" size={16} color="white" />
+            </Text>
+              <Text className=" text-white font-bold py-2 ">
                 Continue with Instagram
               </Text>
             </Pressable>
             <Pressable
               onPress={() => navigation.navigate("PhoneVerification")}
-              className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]"
+              className="w-full py-3 flex-row items-center justify-evenly px-10 rounded-xl bg-[#4366CB]"
             >
-              <Text className=" text-white font-bold py-2 px-4 ">
-                <Feather name="phone" size={18} color="white" />
+              <Feather name="phone" size={16} color="white" />
+              <Text className=" text-white font-bold py-2 ">
                 Continue with Phone number
               </Text>
             </Pressable>
-            <Pressable className="w-full py-3 items-center justify-center rounded-xl bg-[#4366CB]">
-              <Text className="text-white font-bold py-2 px-4 ">
-                <Feather name="user-check" size={18} color="white" /> Existing
-                user? Login
+            <Pressable className="w-full py-3 flex-row items-center justify-evenly px-10 rounded-xl bg-[#4366CB]">
+              <Feather name="user-check" size={16} color="white" />
+              <Text className="text-white font-bold py-2">
+                Existing user? Login
               </Text>
             </Pressable>
           </View>

@@ -32,14 +32,19 @@ const PhoneVerification = ({ navigation }) => {
   };
 
   const getLocationPermission = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      console.log("Location permission not granted");
-    } else {
-      console.log("Location permission granted");
-      const { coords } = await Location.getCurrentPositionAsync({});
-      console.log("Location:", coords);
-      handlelocationVisible();
+    try {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Location permission not granted");
+      } else {
+        console.log("Location permission granted");
+        const { coords } = await Location.getCurrentPositionAsync({});
+        console.log("Location:", coords);
+        handlelocationVisible();
+        navigation.navigate("Profile");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -56,12 +61,12 @@ const PhoneVerification = ({ navigation }) => {
               source={require("../assets/images/phoneverification.png")}
             />
           </View>
-          <View className="h-full rounded-[54px] bg-[#2D4BA1] p-10 items-start">
+          <View className="h-full gap-2 rounded-[54px] bg-[#2D4BA1] p-10 items-start">
             <Ionicons
               onPress={() => navigation.navigate("SignUp")}
               name="arrow-back-circle"
               size={34}
-              color="#FDBD28"
+              color="#FDBD28" 
             />
             <Text className="text-3xl font-bold text-white leading-10">
               Verify It’s You
@@ -124,8 +129,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     borderRadius: 10,
     marginHorizontal: 5, // Add margin between OTP inputs
-    borderWidth: 1,
-    borderColor: "#000",
     textAlign: "center",
   },
   otpInputField: {
